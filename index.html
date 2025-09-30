@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeStudio - Online IDE</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Monaco Editor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="ide-container">
+        <!-- Top Menu Bar -->
+        <div class="menu-bar">
+            <div class="menu-left">
+                <div class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>CodeStudio</span>
+                </div>
+                <div class="menu-items">
+                    <span class="menu-item">File</span>
+                    <span class="menu-item">Edit</span>
+                    <span class="menu-item">View</span>
+                    <span class="menu-item">Run</span>
+                    <span class="menu-item">Help</span>
+                </div>
+            </div>
+            <div class="menu-right">
+                <button class="run-btn" id="runBtn">
+                    <i class="fas fa-play"></i>
+                    Run
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Left Sidebar - File Explorer -->
+            <div class="sidebar left-sidebar" id="fileExplorer">
+                <div class="sidebar-header">
+                    <h3>Explorer</h3>
+                    <div class="sidebar-actions">
+                        <button class="action-btn" id="newFileBtn" title="New File">
+                            <i class="fas fa-file-plus"></i>
+                        </button>
+                        <button class="action-btn" id="newFolderBtn" title="New Folder">
+                            <i class="fas fa-folder-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="file-tree" id="fileTree">
+                    <!-- File tree will be populated here -->
+                </div>
+            </div>
+
+            <!-- Resize Handle -->
+            <div class="resize-handle left-resize" id="leftResize"></div>
+
+            <!-- Editor Area -->
+            <div class="editor-area">
+                <!-- Tab Bar -->
+                <div class="tab-bar" id="tabBar">
+                    <!-- Tabs will be added here -->
+                </div>
+                
+                <!-- Editor Container -->
+                <div class="editor-container">
+                    <!-- Welcome Tab -->
+                    <div class="welcome-tab" id="welcomeTab">
+                        <div class="welcome-content">
+                            <h1>Welcome to CodeStudio</h1>
+                            <p>A modern, VS Code-inspired online IDE</p>
+                            
+                            <div class="welcome-sections">
+                                <div class="welcome-section">
+                                    <h3>Start</h3>
+                                    <div class="welcome-actions">
+                                        <button class="welcome-btn" id="welcomeNewFile">
+                                            <i class="fas fa-file-plus"></i>
+                                            New File
+                                        </button>
+                                        <button class="welcome-btn" id="welcomeOpenRecent">
+                                            <i class="fas fa-history"></i>
+                                            Open Recent
+                                        </button>
+                                        <button class="welcome-btn" id="welcomeRunGuide">
+                                            <i class="fas fa-book"></i>
+                                            Run Code Guide
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="welcome-section">
+                                    <h3>Recent</h3>
+                                    <div class="recent-files" id="recentFiles">
+                                        <p class="no-recent">No recent files</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="welcome-section">
+                                    <h3>Help</h3>
+                                    <div class="help-links">
+                                        <a href="#" class="help-link">
+                                            <i class="fas fa-keyboard"></i>
+                                            Keyboard Shortcuts
+                                        </a>
+                                        <a href="#" class="help-link">
+                                            <i class="fas fa-question-circle"></i>
+                                            Documentation
+                                        </a>
+                                        <a href="#" class="help-link">
+                                            <i class="fas fa-lightbulb"></i>
+                                            Tips & Tricks
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Monaco Editor -->
+                    <div class="monaco-editor" id="monacoEditor" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Right Resize Handle -->
+            <div class="resize-handle right-resize" id="rightResize"></div>
+
+            <!-- Right Sidebar - AI Assistant -->
+            <div class="sidebar right-sidebar" id="aiAssistant">
+                <div class="sidebar-header">
+                    <h3>AI Assistant</h3>
+                    <button class="collapse-btn" id="collapseAI">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="ai-content">
+                    <div class="ai-messages" id="aiMessages">
+                        <div class="ai-message assistant">
+                            <div class="message-bubble">
+                                <p>Hello! I'm your AI coding assistant. How can I help you today?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ai-input-area">
+                        <div class="ai-input-container">
+                            <input type="text" id="aiInput" placeholder="Ask me anything about your code...">
+                            <button id="sendAI">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Panel -->
+        <div class="bottom-panel">
+            <!-- Bottom Resize Handle -->
+            <div class="resize-handle bottom-resize" id="bottomResize"></div>
+            
+            <div class="bottom-tabs">
+                <button class="bottom-tab active" data-panel="output">Output</button>
+                <button class="bottom-tab" data-panel="terminal">Terminal</button>
+            </div>
+            
+            <div class="bottom-content">
+                <div class="bottom-panel-content active" id="outputPanel">
+                    <div class="output-content" id="outputContent">
+                        <p class="output-placeholder">Output will appear here when you run your code...</p>
+                    </div>
+                </div>
+                
+                <div class="bottom-panel-content" id="terminalPanel">
+                    <div class="terminal-content" id="terminalContent">
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">$</span>
+                            <span class="terminal-text">Welcome to CodeStudio Terminal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-left">
+                <span class="status-item" id="statusLanguage">JavaScript</span>
+                <span class="status-item" id="statusEncoding">UTF-8</span>
+                <span class="status-item" id="statusLineEnding">LF</span>
+            </div>
+            <div class="status-right">
+                <span class="status-item" id="statusCursor">Ln 1, Col 1</span>
+                <span class="status-item" id="statusSelection"></span>
+                <span class="status-item">CodeStudio</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Context Menus -->
+    <div class="context-menu" id="fileContextMenu">
+        <div class="context-item" data-action="rename">
+            <i class="fas fa-edit"></i>
+            Rename
+        </div>
+        <div class="context-item" data-action="delete">
+            <i class="fas fa-trash"></i>
+            Delete
+        </div>
+        <div class="context-item" data-action="duplicate">
+            <i class="fas fa-copy"></i>
+            Duplicate
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="newFileModal">
+        <div class="modal-content">
+            <h3>New File</h3>
+            <input type="text" id="newFileName" placeholder="Enter file name (e.g., script.js)">
+            <div class="modal-actions">
+                <button class="btn-secondary" id="cancelNewFile">Cancel</button>
+                <button class="btn-primary" id="confirmNewFile">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="renameModal">
+        <div class="modal-content">
+            <h3>Rename File</h3>
+            <input type="text" id="renameInput" placeholder="Enter new name">
+            <div class="modal-actions">
+                <button class="btn-secondary" id="cancelRename">Cancel</button>
+                <button class="btn-primary" id="confirmRename">Rename</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

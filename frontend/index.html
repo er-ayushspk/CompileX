@@ -1,0 +1,367 @@
+ai-header
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompileX - Online Code Editor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme-toggle.css">
+    <!-- Monaco Editor CSS -->
+    <link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min/vs/editor/editor.main.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Prism.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-dark.min.css">
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader">
+            <svg class="legl" version="1.1" xmlns="http://www.w3.org/2000/svg" width="20.69332" height="68.19944" viewBox="0,0,20.69332,68.19944">
+                <g transform="translate(-201.44063,-235.75466)">
+                    <g stroke-miterlimit="10">
+                        <path d="M218.11971,301.20087c-2.20708,1.73229 -4.41416,0 -4.41416,0l-1.43017,-1.1437c-1.42954,-1.40829 -3.04351,-2.54728 -4.56954,-3.87927c-0.95183,-0.8308 -2.29837,-1.49883 -2.7652,-2.55433c-0.42378,-0.95815 0.14432,-2.02654 0.29355,-3.03399c0.41251,-2.78499 1.82164,-5.43386 2.41472,-8.22683c1.25895,-4.44509 2.73863,-8.98683 3.15318,-13.54796c0.22615,-2.4883 -0.21672,-5.0155 -0.00278,-7.50605c0.30636,-3.56649 1.24602,-7.10406 1.59992,-10.6738c0.29105,-2.93579 -0.00785,-5.9806 -0.00785,-8.93046c0,0 0,-2.44982 3.12129,-2.44982c3.12129,0 3.12129,2.44982 3.12129,2.44982c0,3.06839 0.28868,6.22201 -0.00786,9.27779c-0.34637,3.56935 -1.30115,7.10906 -1.59992,10.6738c-0.2103,2.50918 0.22586,5.05326 -0.00278,7.56284c-0.43159,4.7371 -1.94029,9.46317 -3.24651,14.07835c-0.47439,2.23403 -1.29927,4.31705 -2.05805,6.47156c-0.18628,0.52896 -0.1402,1.0974 -0.327,1.62624c-0.09463,0.26791 -0.64731,0.47816 -0.50641,0.73323c0.19122,0.34617 0.86423,0.3445 1.2346,0.58502c1.88637,1.22503 3.50777,2.79494 5.03,4.28305l0.96971,0.73991c0,0 2.20708,1.73229 0,3.46457z" fill="none" stroke="#191e2e" stroke-width="7"></path>
+                    </g>
+                </g>
+            </svg>
+            <svg class="legr" version="1.1" xmlns="http://www.w3.org/2000/svg" width="41.02537" height="64.85502" viewBox="0,0,41.02537,64.85502">
+                <g transform="translate(-241.54137,-218.44347)">
+                    <g stroke-miterlimit="10">
+                        <path d="M279.06674,279.42662c-2.27967,1.98991 -6.08116,0.58804 -6.08116,0.58804l-2.47264,-0.92915c-2.58799,-1.18826 -5.31176,-2.08831 -7.99917,-3.18902c-1.67622,-0.68654 -3.82471,-1.16116 -4.93147,-2.13229c-1.00468,-0.88156 -0.69132,-2.00318 -0.92827,-3.00935c-0.65501,-2.78142 0.12275,-5.56236 -0.287,-8.37565c-0.2181,-4.51941 -0.17458,-9.16283 -1.60696,-13.68334c-0.78143,-2.46614 -2.50162,-4.88125 -3.30086,-7.34796c-1.14452,-3.53236 -1.40387,-7.12078 -2.48433,-10.66266c-0.88858,-2.91287 -2.63779,-5.85389 -3.93351,-8.74177c0,0 -1.07608,-2.39835 3.22395,-2.81415c4.30003,-0.41581 2.41605,1.98254 2.41605,1.98254c1.34779,3.00392 3.13072,6.05282 4.06444,9.0839c1.09065,3.54049 1.33011,7.13302 2.48433,10.66266c0.81245,2.48448 2.5308,4.917 3.31813,7.40431c1.48619,4.69506 1.48366,9.52281 1.71137,14.21503c0.32776,2.25028 0.10631,4.39942 0.00736,6.60975c-0.02429,0.54266 0.28888,1.09302 0.26382,1.63563c-0.01269,0.27488 -0.68173,0.55435 -0.37558,0.78529c0.41549,0.31342 1.34191,0.22213 1.95781,0.40826c3.13684,0.94799 6.06014,2.26892 8.81088,3.52298l1.66093,0.59519c0,0 6.76155,1.40187 4.48187,3.39177z" fill="none" stroke="#000000" stroke-width="7"></path>
+                    </g>
+                </g>
+            </svg>
+            <div class="bod">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="144.10576" height="144.91623" viewBox="0,0,144.10576,144.91623">
+                    <g transform="translate(-164.41679,-112.94712)">
+                        <g stroke-miterlimit="10">
+                            <path d="M166.9168,184.02633c0,-36.49454 35.0206,-66.07921 72.05288,-66.07921c37.03228,0 67.05288,29.58467 67.05288,66.07921c0,6.94489 -1.08716,13.63956 -3.10292,19.92772c-2.71464,8.46831 -7.1134,16.19939 -12.809,22.81158c-2.31017,2.68194 -7.54471,12.91599 -7.54471,12.91599c0,0 -5.46714,-1.18309 -8.44434,0.6266c-3.86867,2.35159 -10.95356,10.86714 -10.95356,10.86714c0,0 -6.96906,-3.20396 -9.87477,-2.58085c-2.64748,0.56773 -6.72538,5.77072 -6.72538,5.77072c0,0 -5.5023,-4.25969 -7.5982,-4.25969c-3.08622,0 -9.09924,3.48259 -9.09924,3.48259c0,0 -6.0782,-5.11244 -9.00348,-5.91884c-4.26461,-1.17561 -12.23343,0.75049 -12.23343,0.75049c0,0 -5.18164,-8.26065 -7.60688,-9.90388c-3.50443,-2.37445 -8.8271,-3.95414 -8.8271,-3.95414c0,0 -5.33472,-8.81718 -7.27019,-11.40895c-4.81099,-6.44239 -13.46422,-9.83437 -15.65729,-17.76175c-1.53558,-5.55073 -2.35527,-21.36472 -2.35527,-21.36472z" fill="#191e2e" stroke="#000000" stroke-width="5" stroke-linecap="butt"></path>
+                            <path d="M167.94713,180c0,-37.03228 35.0206,-67.05288 72.05288,-67.05288c37.03228,0 67.05288,30.0206 67.05288,67.05288c0,7.04722 -1.08716,13.84053 -3.10292,20.22135c-2.71464,8.59309 -7.1134,16.43809 -12.809,23.14771c-2.31017,2.72146 -7.54471,13.1063 -7.54471,13.1063c0,0 -5.46714,-1.20052 -8.44434,0.63584c-3.86867,2.38624 -10.95356,11.02726 -10.95356,11.02726c0,0 -6.96906,-3.25117 -9.87477,-2.61888c-2.64748,0.5761 -6.72538,5.85575 -6.72538,5.85575c0,0 -5.5023,-4.32246 -7.5982,-4.32246c-3.08622,0 -9.09924,3.5339 -9.09924,3.5339c0,0 -6.0782,-5.18777 -9.00348,-6.00605c-4.26461,-1.19293 -12.23343,0.76155 -12.23343,0.76155c0,0 -5.18164,-8.38236 -7.60688,-10.04981c-3.50443,-2.40943 -8.8271,-4.0124 -8.8271,-4.0124c0,0 -5.33472,-8.9471 -7.27019,-11.57706c-4.81099,-6.53732 -13.46422,-9.97928 -15.65729,-18.02347c-1.53558,-5.63252 -2.35527,-21.67953 -2.35527,-21.67953z" fill="#191e2e" stroke="none" stroke-width="0" stroke-linecap="butt"></path>
+                            <path d="M216.22445,188.06994c0,0 1.02834,11.73245 -3.62335,21.11235c-4.65169,9.3799 -13.06183,10.03776 -13.06183,10.03776c0,0 7.0703,-3.03121 10.89231,-10.7381c4.34839,-8.76831 5.79288,-20.41201 5.79288,-20.41201z" fill="none" stroke="#2f3a50" stroke-width="3" stroke-linecap="round"></path>
+                        </g>
+                    </g>
+                </svg>
+                <svg class="head" version="1.1" xmlns="http://www.w3.org/2000/svg" width="115.68559" height="88.29441" viewBox="0,0,115.68559,88.29441">
+                    <g transform="translate(-191.87889,-75.62023)">
+                        <g stroke-miterlimit="10">
+                            <path d="M195.12889,128.77752c0,-26.96048 21.33334,-48.81626 47.64934,-48.81626c26.316,0 47.64935,21.85578 47.64935,48.81626c0,0.60102 -9.22352,20.49284 -9.22352,20.49284l-7.75885,0.35623l-7.59417,6.15039l-8.64295,-1.74822l-11.70703,6.06119l-6.38599,-4.79382l-6.45999,2.36133l-7.01451,-7.38888l-8.11916,1.29382l-6.19237,-6.07265l-7.6263,-1.37795l-4.19835,-7.87062l-4.24236,-4.16907c0,0 -0.13314,-2.0999 -0.13314,-3.29458z" fill="none" stroke="#2f3a50" stroke-width="6" stroke-linecap="butt"></path>
+                            <path d="M195.31785,124.43649c0,-26.96048 21.33334,-48.81626 47.64934,-48.81626c26.316,0 47.64935,21.85578 47.64935,48.81626c0,1.03481 -0.08666,2.8866 -0.08666,2.8866c0,0 16.8538,15.99287 16.21847,17.23929c-0.66726,1.30905 -23.05667,-4.14265 -23.05667,-4.14265l-2.29866,4.5096l-7.75885,0.35623l-7.59417,6.15039l-8.64295,-1.74822l-11.70703,6.06119l-6.38599,-4.79382l-6.45999,2.36133l-7.01451,-7.38888l-8.11916,1.29382l-6.19237,-6.07265l-7.6263,-1.37795l-4.19835,-7.87062l-4.24236,-4.16907c0,0 -0.13314,-2.0999 -0.13314,-3.29458z" fill="#191e2e" stroke-opacity="0.48627" stroke="#ffffff" stroke-width="0" stroke-linecap="butt"></path>
+                            <path d="M271.10348,122.46768l10.06374,-3.28166l24.06547,24.28424" fill="none" stroke="#2f3a50" stroke-width="6" stroke-linecap="round"></path>
+                            <path d="M306.56448,144.85764l-41.62024,-8.16845l2.44004,-7.87698" fill="none" stroke="#000000" stroke-width="3.5" stroke-linecap="round"></path>
+                            <path d="M276.02738,115.72434c-0.66448,-4.64715 2.56411,-8.95308 7.21127,-9.61756c4.64715,-0.66448 8.95309,2.56411 9.61757,7.21126c0.46467,3.24972 -1.94776,8.02206 -5.96624,9.09336c-2.11289,-1.73012 -5.08673,-5.03426 -5.08673,-5.03426c0,0 -4.12095,1.16329 -4.60481,1.54229c-0.16433,-0.04891 -0.62732,-0.38126 -0.72803,-0.61269c-0.30602,-0.70328 -0.36302,-2.02286 -0.44303,-2.58239z" fill="#ffffff" stroke="none" stroke-width="0.5" stroke-linecap="butt"></path>
+                            <path d="M242.49281,125.6424c0,-4.69442 3.80558,-8.5 8.5,-8.5c4.69442,0 8.5,3.80558 8.5,8.5c0,4.69442 -3.80558,8.5 -8.5,8.5c-4.69442,0 -8.5,-3.80558 -8.5,-8.5z" fill="#ffffff" stroke="none" stroke-width="0.5" stroke-linecap="butt"></path>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="app-container">
+        <!-- Global Header -->
+        <div class="global-header">
+            <div class="app-brand">
+                <h1>CompileX</h1>
+            </div>
+            <div class="header-actions">
+                <label id="theme-toggle-button" title="Toggle Theme">
+                  <input type="checkbox" id="toggle">
+                  <svg viewBox="0 0 69.667 44" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(3.5 3.5)" data-name="Component 15 – 1" id="Component_15_1">
+                      <g filter="url(#container)" transform="matrix(1, 0, 0, 1, -3.5, -3.5)">
+                        <rect fill="#83cbd8" transform="translate(3.5 3.5)" rx="17.5" height="35" width="60.667" data-name="container" id="container"></rect>
+                      </g>
+                      <g transform="translate(2.333 2.333)" id="button">
+                        <g data-name="sun" id="sun">
+                          <g filter="url(#sun-outer)" transform="matrix(1, 0, 0, 1, -5.83, -5.83)">
+                            <circle fill="#f8e664" transform="translate(5.83 5.83)" r="15.167" cy="15.167" cx="15.167" data-name="sun-outer" id="sun-outer-2"></circle>
+                          </g>
+                          <g filter="url(#sun)" transform="matrix(1, 0, 0, 1, -5.83, -5.83)">
+                            <path fill="rgba(246,254,247,0.29)" transform="translate(9.33 9.33)" d="M11.667,0A11.667,11.667,0,1,1,0,11.667,11.667,11.667,0,0,1,11.667,0Z" data-name="sun" id="sun-3"></path>
+                          </g>
+                          <circle fill="#fcf4b9" transform="translate(8.167 8.167)" r="7" cy="7" cx="7" id="sun-inner"></circle>
+                        </g>
+                        <g data-name="moon" id="moon">
+                          <g filter="url(#moon)" transform="matrix(1, 0, 0, 1, -31.5, -5.83)">
+                            <circle fill="#cce6ee" transform="translate(31.5 5.83)" r="15.167" cy="15.167" cx="15.167" data-name="moon" id="moon-3"></circle>
+                          </g>
+                          <g fill="#a6cad0" transform="translate(-24.415 -1.009)" id="patches">
+                            <circle transform="translate(43.009 4.496)" r="2" cy="2" cx="2"></circle>
+                            <circle transform="translate(39.366 17.952)" r="2" cy="2" cx="2" data-name="patch"></circle>
+                            <circle transform="translate(33.016 8.044)" r="1" cy="1" cx="1" data-name="patch"></circle>
+                            <circle transform="translate(51.081 18.888)" r="1" cy="1" cx="1" data-name="patch"></circle>
+                            <circle transform="translate(33.016 22.503)" r="1" cy="1" cx="1" data-name="patch"></circle>
+                            <circle transform="translate(50.081 10.53)" r="1.5" cy="1.5" cx="1.5" data-name="patch"></circle>
+                          </g>
+                        </g>
+                      </g>
+                      <g filter="url(#cloud)" transform="matrix(1, 0, 0, 1, -3.5, -3.5)">
+                        <path fill="#fff" transform="translate(-3466.47 -160.94)" d="M3512.81,173.815a4.463,4.463,0,0,1,2.243.62.95.95,0,0,1,.72-1.281,4.852,4.852,0,0,1,2.623.519c.034.02-.5-1.968.281-2.716a2.117,2.117,0,0,1,2.829-.274,1.821,1.821,0,0,1,.854,1.858c.63.037,2.594-.049,3.285,1.273s-.865,2.544-.807,2.626a12.192,12.192,0,0,1,2.278.892c.553.448,1.106,1.992-1.62,2.927a7.742,7.742,0,0,1-3.762-.3c-1.28-.49-1.181-2.65-1.137-2.624s-1.417,2.2-2.623,2.2a4.172,4.172,0,0,1-2.394-1.206,3.825,3.825,0,0,1-2.771.774c-3.429-.46-2.333-3.267-2.2-3.55A3.721,3.721,0,0,1,3512.81,173.815Z" data-name="cloud" id="cloud"></path>
+                      </g>
+                      <g fill="#def8ff" transform="translate(3.585 1.325)" id="stars">
+                        <path transform="matrix(-1, 0.017, -0.017, -1, 24.231, 3.055)" d="M.774,0,.566.559,0,.539.458.933.25,1.492l.485-.361.458.394L1.024.953,1.509.592.943.572Z"></path>
+                        <path transform="matrix(-0.777, 0.629, -0.629, -0.777, 23.185, 12.358)" d="M1.341.529.836.472.736,0,.505.46,0,.4.4.729l-.231.46L.605.932l.4.326L.9.786Z" data-name="star"></path>
+                        <path transform="matrix(0.438, 0.899, -0.899, 0.438, 23.177, 29.735)" d="M.015,1.065.475.9l.285.365L.766.772l.46-.164L.745.494.751,0,.481.407,0,.293.285.658Z" data-name="star"></path>
+                        <path transform="translate(12.677 0.388) rotate(104)" d="M1.161,1.6,1.059,1,1.574.722.962.607.86,0,.613.572,0,.457.446.881.2,1.454l.516-.274Z" data-name="star"></path>
+                        <path transform="matrix(-0.07, 0.998, -0.998, -0.07, 11.066, 15.457)" d="M.873,1.648l.114-.62L1.579.945,1.03.62,1.144,0,.706.464.157.139.438.7,0,1.167l.592-.083Z" data-name="star"></path>
+                        <path transform="translate(8.326 28.061) rotate(11)" d="M.593,0,.638.724,0,.982l.7.211.045.724.36-.64.7.211L1.342.935,1.7.294,1.063.552Z" data-name="star"></path>
+                        <path transform="translate(5.012 5.962) rotate(172)" d="M.816,0,.5.455,0,.311.323.767l-.312.455.516-.215.323.456L.827.911,1.343.7.839.552Z" data-name="star"></path>
+                        <path transform="translate(2.218 14.616) rotate(169)" d="M1.261,0,.774.571.114.3.487.967,0,1.538.728,1.32l.372.662.047-.749.728-.218L1.215.749Z" data-name="star"></path>
+                      </g>
+                    </g>
+                  </svg>
+                </label>
+            </div>
+        </div>
+
+        <!-- Left sidebar for file explorer -->
+        <div class="sidebar left-sidebar" id="left-sidebar">
+            <div class="sidebar-header">
+                <h3>Explorer</h3>
+                <div class="sidebar-actions">
+                    <button id="new-file-btn" title="New File"><i class="fas fa-file"></i></button>
+                    <button id="new-folder-btn" title="New Folder"><i class="fas fa-folder"></i></button>
+                    <button id="open-folder-btn" title="Open Folder"><i class="fas fa-folder-open"></i></button>
+
+                </div>
+            </div>
+            <div id="file-explorer" class="file-explorer">
+                <!-- File tree will be populated here -->
+            </div>
+        </div>
+
+        <!-- Gripper for resizing left sidebar -->
+        <div class="resizer horizontal-resizer" id="left-resizer"></div>
+
+        <!-- Main content area -->
+        <div class="main-content" id="main-content">
+            <!-- Tabs for open files -->
+            <div class="editor-tabs">
+                <ul id="tabs-container">
+                    <!-- Tabs will be added here -->
+                </ul>
+            </div>
+
+            <!-- Code editor container -->
+            <div id="editor-container" class="editor-container">
+                <div id="editor" style="width: 100%; height: 100%;"></div>
+            </div>
+
+            <!-- Gripper for resizing editor/panel vertically -->
+            <div class="resizer vertical-resizer" id="editor-resizer"></div>
+
+            <!-- Terminal/Output panel -->
+            <div class="panel" id="bottom-panel">
+                <div class="panel-header">
+                    <div class="panel-tabs">
+                        <div class="panel-tab active" data-target="output">Output</div>
+                        <div class="panel-tab" data-target="terminal">Terminal</div>
+                        <div class="panel-tab" data-target="problems">Problems</div>
+                    </div>
+                    <div class="panel-actions">
+                        <button id="run-btn" title="Run Code"><i class="fas fa-play"></i> Run</button>
+                        <button id="download-btn" title="Download File"><i class="fas fa-download"></i> Download</button>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div id="output" class="panel-section active">
+                        <!-- Code output will appear here -->
+                    </div>
+                    <div id="terminal" class="panel-section">
+                        <!-- Terminal will be here -->
+                    </div>
+                    <div id="problems" class="panel-section">
+                        <!-- Problems/errors will be listed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gripper for resizing right sidebar -->
+        <div class="resizer horizontal-resizer" id="right-resizer"></div>
+
+        <!-- Right sidebar for AI assistant -->
+        <div class="sidebar right-sidebar" id="right-sidebar">
+            <div class="sidebar-header ai-header">
+                <h3>AI Assistant</h3>
+                <div class="ai-actions">
+                    <button id="agent-clear" title="Clear Chat"><i class="fas fa-broom"></i></button>
+                </div>
+            </div>
+            <div id="ai-assistant" class="ai-assistant">
+                <div class="agent-chat" id="agent-chat"></div>
+                <div class="agent-input">
+                    <textarea id="agent-prompt" placeholder="Ask the AI assistant... (Enter to send, Shift+Enter for new line)"></textarea>
+                    <button id="agent-send" title="Send"><i class="fas fa-paper-plane"></i> Send</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal for file operations -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Create New File</h2>
+            <div id="modal-body">
+                <!-- Modal content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Monaco Editor from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min/vs/loader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
+    
+    <!-- Load application scripts first -->
+    <script src="js/editor_new.js"></script>
+    <script src="js/compiler.js"></script>
+    <script src="js/file-explorer.js"></script>
+    <script src="js/resizer.js"></script>
+    <script src="js/agent.js"></script>
+    <script src="js/terminal.js"></script>
+    <script src="js/problems.js"></script>
+    <script src="js/app.js"></script>
+    
+    <!-- Initialize Monaco and application -->
+    <script>
+        // Configure Monaco loader
+        require.config({
+            paths: {
+                'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min/vs'
+            }
+        });
+        
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load Monaco editor
+            require(['vs/editor/editor.main'], function() {
+                console.log('Monaco editor loaded from CDN');
+                
+                // Initialize application components after Monaco is loaded
+                setTimeout(function() {
+                    try {
+                        console.log('Initializing application components...');
+                        
+                        // Wait for EditorManager class to be available
+                        const initEditorManager = (retries = 10) => {
+                            if (typeof EditorManager !== 'undefined') {
+                                // Initialize editor manager first (it's needed by file explorer)
+                                if (!window.editorManager) {
+                                    try {
+                                        window.editorManager = new EditorManager();
+                                        console.log('EditorManager initialized successfully');
+                                        
+                                        // Initialize file explorer (after EditorManager is ready)
+                                        if (!window.fileExplorer) {
+                                            window.fileExplorer = new FileExplorer();
+                                            console.log('FileExplorer initialized');
+                                        } else {
+                                            console.log('FileExplorer already initialized');
+                                        }
+                                    } catch (err) {
+                                        console.error('Error initializing EditorManager:', err);
+                                    }
+                                } else {
+                                    console.log('EditorManager already initialized');
+                                }
+                            } else if (retries > 0) {
+                                console.log('Waiting for EditorManager class...', retries);
+                                setTimeout(() => initEditorManager(retries - 1), 200);
+                            } else {
+                                console.error('EditorManager class not found after retries');
+                                alert('Error: EditorManager not loaded. Please refresh the page.');
+                            }
+                        };
+                        
+                        initEditorManager();
+                        
+                        // Initialize compiler with API key
+                        window.compiler = new Compiler();
+                        window.compiler.setApiKey('AIzaSyCDuwoOhkKKwOhPF4yAhXRm1kF4_Kq1VmA');
+                        console.log('Compiler initialized with API key');
+                        
+                        // Initialize code agent
+                        window.codeAgent = new CodeAgent();
+                        console.log('CodeAgent initialized');
+                        
+                        // Initialize resizer
+                        new Resizer();
+                        console.log('Resizer initialized');
+                        
+                        // Hide page loader after everything is loaded (show for at least 2 seconds)
+                        setTimeout(function() {
+                            const pageLoader = document.getElementById('page-loader');
+                            if (pageLoader) {
+                                pageLoader.classList.add('hidden');
+                                // Remove from DOM after animation
+                                setTimeout(function() {
+                                    if (pageLoader.parentNode) {
+                                        pageLoader.parentNode.removeChild(pageLoader);
+                                    }
+                                }, 500);
+                            }
+                        }, 2000); // Show loader for at least 2 seconds
+                        
+                        // Don't create welcome file here - let editor.js handle it with createWelcomeTab
+                        // This prevents duplicate welcome files
+                    } catch (err) {
+                        console.error('Error initializing components:', err);
+                        // Hide loader even on error
+                        const pageLoader = document.getElementById('page-loader');
+                        if (pageLoader) {
+                            pageLoader.classList.add('hidden');
+                        }
+                    }
+                }, 1500); // Increased delay to ensure editor.js is fully loaded
+            });
+        });
+        
+        // Make sure EditorManager is available globally as a fallback
+        window.ensureEditorManager = function() {
+            if (!window.editorManager && typeof EditorManager !== 'undefined') {
+                try {
+                    window.editorManager = new EditorManager();
+                    console.log('EditorManager initialized via fallback');
+                    return true;
+                } catch (err) {
+                    console.error('Failed to initialize EditorManager:', err);
+                    return false;
+                }
+            }
+            return !!window.editorManager;
+        };
+        
+        // Fallback: hide loader if page takes too long to load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const pageLoader = document.getElementById('page-loader');
+                if (pageLoader && !pageLoader.classList.contains('hidden')) {
+                    pageLoader.classList.add('hidden');
+                    setTimeout(function() {
+                        if (pageLoader.parentNode) {
+                            pageLoader.parentNode.removeChild(pageLoader);
+                        }
+                    }, 500);
+                }
+            }, 3000); // Maximum 3 seconds
+        });
+    </script>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <!-- For HTML -->
+</body>
+
+</html>

@@ -981,4 +981,4 @@ def restart_server():
     return jsonify({'success': True, 'message': 'Server is restarting...'})
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, port=5000)
+    socketio.run(app, debug=True, port=5000, allow_unsafe_werkzeug=True)
